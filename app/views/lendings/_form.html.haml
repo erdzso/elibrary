@@ -1,0 +1,11 @@
+= simple_form_for(@lending) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :book_id
+    = f.input :started_at
+    = f.input :finished_at
+
+  .form-actions
+    = f.button :submit

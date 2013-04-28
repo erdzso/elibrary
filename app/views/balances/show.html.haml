@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @balance.type
+%p
+  %b Amount:
+  = @balance.amount
+
+= link_to 'Edit', edit_balance_path(@balance)
+\|
+= link_to 'Back', balances_path

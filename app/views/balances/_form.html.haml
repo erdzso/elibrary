@@ -1,0 +1,9 @@
+= simple_form_for(@balance) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :type
+    = f.input :amount
+
+  .form-actions
+    = f.button :submit

@@ -1,4 +1,13 @@
 Elibrary::Application.routes.draw do
+  resources :books
+
+
+  resources :lendings
+
+
+  resources :balances
+
+
   authenticated :user do
     root :to => 'home#index'
   end

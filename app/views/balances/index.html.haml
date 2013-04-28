@@ -1,0 +1,22 @@
+%h3 Balances
+
+.span8
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Type
+        %th Amount
+        %th
+        %th
+        %th
+    %tbody 
+      - @balances.each do |balance|
+        %tr
+          %td= balance.type
+          %td= balance.amount
+          %td= link_to 'Show', balance, :class => 'btn btn-mini'
+          %td= link_to 'Edit', edit_balance_path(balance), :class => 'btn btn-mini'
+          %td= link_to 'Destroy', balance, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini'
+
+- # TODO FIXME Ide kell jönne az admin által elérhető új balance-nak
+- #= link_to 'New Balance', new_balance_path, :class => 'btn btn-mini'

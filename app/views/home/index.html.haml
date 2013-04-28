@@ -1,4 +1,8 @@
 %h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+- #- @users.each do |user|
+- #  %p
+- #    User: #{link_to user.name, user}
+- if user_signed_in?
+  Ide jön majd az akruális tartalom.
+- else
+  Valami info.

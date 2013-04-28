@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @lending.user_id
+%p
+  %b Book:
+  = @lending.book_id
+%p
+  %b Started at:
+  = @lending.started_at
+%p
+  %b Finished at:
+  = @lending.finished_at
+
+= link_to 'Edit', edit_lending_path(@lending)
+\|
+= link_to 'Back', lendings_path
