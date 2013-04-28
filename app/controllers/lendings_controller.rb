@@ -1,8 +1,20 @@
 class LendingsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /lendings
   # GET /lendings.json
   def index
-    @lendings = Lending.all
+    @lendings = unless params[:user_id]
+                  authorize! :index, @user, :message => 'Not authorized as an administrator.'
+                  Lending.all
+                else
+                  unless params[:user_id].to_s == current_user.id.to_s
+                    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+                    User.find(params[:user_id]).lendings
+                  else
+                    User.find(current_user.id).lendings
+                  end
+                end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,6 +46,7 @@ class LendingsController < ApplicationController
 
   # GET /lendings/1/edit
   def edit
+    authorize! :edit, @user, :message => 'Not authorized as an administrator.'
     @lending = Lending.find(params[:id])
   end
 
@@ -56,6 +69,7 @@ class LendingsController < ApplicationController
   # PUT /lendings/1
   # PUT /lendings/1.json
   def update
+    authorize! :edit, @user, :message => 'Not authorized as an administrator.'
     @lending = Lending.find(params[:id])
 
     respond_to do |format|

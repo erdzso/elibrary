@@ -13,6 +13,7 @@
       %th
       %th
       %th
+      %th
   %tbody
     - @books.each do |book|
       %tr
@@ -24,8 +25,17 @@
         %td= book.publisher_name
         %td= book.author_name
         %td= link_to 'Show', book, :class => 'btn btn-mini'
-        %td= link_to 'Edit', edit_book_path(book), :class => 'btn btn-mini'
-        %td= link_to 'Destroy', book, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini'
+        - if current_user.has_role? :admin
+          %td= link_to 'Edit', edit_book_path(book), :class => 'btn btn-mini'
+          %td= link_to 'Destroy', book, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini'
+        - else
+          %td
+          %td
+        - if book.at_lending?
+          %td= link_to 'Current lending', lending_path(book.lendings.last), :class => 'btn btn-mini'
+        - else
+          %td= link_to 'Lend', lendings_path(lending: { book_id: book.id, user_id: current_user.id, started_at: Time.now.utc }), method: 'POST', :class => 'btn btn-mini'
+          
 
 - # TODO FIXME új könyvet csak az admin vehet fel
 - #= link_to 'New Book', new_book_path, :class => 'btn btn-mini'

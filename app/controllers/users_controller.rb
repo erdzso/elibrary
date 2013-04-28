@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    authorize! :show, @user, :message => 'Not authorized as an administrator.' unless @user.id == current_user.id
   end
   
   def update

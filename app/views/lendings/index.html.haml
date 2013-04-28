@@ -9,7 +9,7 @@
       %th Finished at
       %th
       %th
-      %th
+      -#%th
 
   %tbody
     - @lendings.each do |lending|
@@ -19,8 +19,8 @@
         %td= lending.started_at
         %td= lending.finished_at
         %td= link_to 'Show', lending, :class => 'btn btn-mini'
-        %td= link_to 'Edit', edit_lending_path(lending), :class => 'btn btn-mini'
-        %td= link_to 'Destroy', lending, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini'
+        %td= link_to 'Edit', edit_lending_path(lending), :class => 'btn btn-mini' if current_user.has_role? :admin
+        -#%td= link_to 'Destroy', lending, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini'
 
 - # TODO nem biztos, hogy erre itt szükség lesz
 - #= link_to 'New Lending', new_lending_path, :class => 'btn btn-mini'
