@@ -1,4 +1,7 @@
 %h3 Books
+- if current_user.has_role?(:admin)
+  = link_to 'New Book', new_book_path, :class => 'btn'
+
 = simple_form_for @books, url: books_path, html: { :method => 'GET' } do |f|
   = text_field_tag :search, params[:search]
   = f.submit :search, :class => 'btn margin-bottom'
@@ -40,5 +43,3 @@
           %td= link_to 'Lend', lendings_path(lending: { book_id: book.id, user_id: current_user.id, started_at: Time.now.utc }), method: 'POST', :class => 'btn btn-mini'
           
 
-- # TODO FIXME új könyvet csak az admin vehet fel
-- #= link_to 'New Book', new_book_path, :class => 'btn btn-mini'
