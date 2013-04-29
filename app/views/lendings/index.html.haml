@@ -14,8 +14,8 @@
   %tbody
     - @lendings.each do |lending|
       %tr
-        %td= lending.user_id
-        %td= lending.book_id
+        %td= lending.user.name
+        %td= lending.book.title
         %td= lending.started_at
         %td= lending.finished_at
         %td= link_to 'Show', lending, :class => 'btn btn-mini'

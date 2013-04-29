@@ -1,4 +1,7 @@
 %h3 Books
+= simple_form_for @books, url: books_path, html: { :method => 'GET' } do |f|
+  = text_field_tag :search, params[:search]
+  = f.submit :search, :class => 'btn margin-bottom'
 
 %table.table.table-condensed
   %thead
