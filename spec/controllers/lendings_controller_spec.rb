@@ -20,6 +20,10 @@ require 'spec_helper'
 
 describe LendingsController do
 
+  before :each do
+    controller.stub(:authorize!).and_return(true)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Lending. As you add validations to Lending, be sure to
   # adjust the attributes here as well.

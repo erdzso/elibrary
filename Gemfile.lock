@@ -177,6 +177,8 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sexp_processor (4.2.1)
+    shoulda-matchers (2.0.0)
+      activesupport (>= 3.0.0)
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -231,6 +233,7 @@ DEPENDENCIES
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
   selenium-webdriver
+  shoulda-matchers
   simple_form (>= 2.1.0)
   sqlite3
   therubyracer (>= 0.11.3)
